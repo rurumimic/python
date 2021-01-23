@@ -146,11 +146,23 @@ pyenv install 3.9.0
 pyenv versions
 ```
 
+#### Remove Python
+
+```bash
+pyenv uninstall 3.9.0
+```
+
 ### Create a virtual environment
 
 ```bash
 pyenv virtualenv 3.9.0 venv390
 pyenv virtualenvs
+```
+
+#### Remove a virtual environment
+
+```bash
+pyenv virtualenv-delete venv390
 ```
 
 ### Set auto-activate
