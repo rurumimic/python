@@ -243,3 +243,19 @@ Now `miniconda3-latest/envs/venv390`:
 (venv390) λ python -V
 Python 3.9.0
 ```
+
+#### Remove conda venv
+
+```bash
+(venv390) 1 λ pyenv activate conda3
+
+(conda3) λ conda env list
+# conda environments:
+#
+base                     /home/master/.pyenv/versions/miniconda3-latest
+conda3                *  /home/master/.pyenv/versions/miniconda3-latest/envs/conda3
+venv390                  /home/master/.pyenv/versions/miniconda3-latest/envs/venv390
+
+(conda3) λ conda env remove -n venv390
+Remove all packages in environment /home/master/.pyenv/versions/miniconda3-latest/envs/venv390:
+```
