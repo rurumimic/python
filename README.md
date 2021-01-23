@@ -1,9 +1,15 @@
 # Python
 
-- [pyenv](https://github.com/pyenv/pyenv)
-- [virtualenv](https://github.com/pyenv/pyenv-virtualenv)
-- [autoenv](https://github.com/inishchith/autoenv)
-- [direnv](https://direnv.net/)
+- [pyenv](#pyenv)
+  - [github](https://github.com/pyenv/pyenv)
+- [virtualenv](#virtualenv)
+  - [github](https://github.com/pyenv/pyenv-virtualenv)
+- [autoenv](#autoenv)
+  - [github](https://github.com/inishchith/autoenv)
+- direnv
+  - [doc](https://direnv.net/)
+- [conda](#conda)
+  - [doc](https://docs.conda.io/en/latest/)
 
 ## Install
 
@@ -125,9 +131,11 @@ echo "AUTOENV_ENABLE_LEAVE='enabled'" >> ~/.profile
 echo 'source ~/.autoenv/activate.sh' >> ~/.profile
 ```
 
+---
+
 ## Usage
 
-### Pyenv
+### Download Python by Pyenv
 
 ```bash
 pyenv install --list
@@ -138,16 +146,100 @@ pyenv install 3.9.0
 pyenv versions
 ```
 
-### Virtualenv
+### Create a virtual environment
 
 ```bash
 pyenv virtualenv 3.9.0 venv390
 pyenv virtualenvs
 ```
 
-### Autoenv
+### Set auto-activate
 
 ```bash
 echo 'pyenv activate venv390' > .autoenv
 echo 'pyenv deactivate' > .autoenv.leave
+```
+
+### Conda
+
+#### Download miniconda
+
+```bash
+pyenv install --list | grep conda
+pyenv install miniconda3-latest
+```
+
+#### Create a conda environment
+
+```bash
+pyenv virtualenv miniconda3-latest conda3
+pyenv activate conda3
+```
+
+```bash
+(conda3) $ pyenv versions
+  3.9.1
+* conda3 (set by PYENV_VERSION environment variable)
+  miniconda3-latest
+  miniconda3-latest/envs/conda3
+
+(conda3) $ pyenv virtualenvs
+* conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest (created from /home/master/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
+```
+
+#### Create a venv in conda venv
+
+```bash
+conda create -n venv390 python=3.9.0
+```
+
+```bash
+(conda3) $ pyenv versions
+  3.9.1
+* conda3 (set by PYENV_VERSION environment variable)
+  miniconda3-latest
+  miniconda3-latest/envs/conda3
+  miniconda3-latest/envs/venv390
+
+(conda3) $ pyenv virtualenvs
+* conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest (created from /home/master/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/venv390 (created from /home/master/.pyenv/versions/miniconda3-latest)
+```
+
+#### Activate another conda venv
+
+In `conda3`:
+
+```bash
+(conda3) λ pyenv version
+conda3 (set by PYENV_VERSION environment variable)
+
+(conda3) λ python -V
+Python 3.9.1
+
+(conda3) λ pyenv activate miniconda3-latest/envs/venv390
+```
+
+Now `miniconda3-latest/envs/venv390`:
+
+```
+(venv390) λ pyenv versions
+  3.9.1
+  conda3
+  miniconda3-latest
+  miniconda3-latest/envs/conda3
+* miniconda3-latest/envs/venv390 (set by PYENV_VERSION environment variable)
+
+(venv390) λ pyenv virtualenvs
+  conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest (created from /home/master/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
+* miniconda3-latest/envs/venv390 (created from /home/master/.pyenv/versions/miniconda3-latest)
+
+(venv390) λ python -V
+Python 3.9.0
 ```
