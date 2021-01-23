@@ -10,6 +10,8 @@
   - [doc](https://direnv.net/)
 - [conda](#conda)
   - [doc](https://docs.conda.io/en/latest/)
+- [jupyter](#jupyter)
+  - [install](https://jupyter.org/install.html)
 
 ## Install
 
@@ -129,6 +131,31 @@ echo "AUTOENV_ENV_FILENAME='.autoenv'" >> ~/.profile
 echo "AUTOENV_ENV_LEAVE_FILENAME='.autoenv.leave'" >> ~/.profile
 echo "AUTOENV_ENABLE_LEAVE='enabled'" >> ~/.profile
 echo 'source ~/.autoenv/activate.sh' >> ~/.profile
+```
+
+### Jupyter
+
+```bash
+conda install -c conda-forge jupyterlab
+pip install jupyterlab
+```
+
+#### Configuration
+
+```bash
+jupyter notebook --generate-config # == jupyter lab --generate-config
+
+Writing default config to: /home/master/.jupyter/jupyter_notebook_config.py
+```
+
+```bash
+vi ~/.jupyter/jupyter_notebook_config.py
+```
+
+```py
+c.NotebookApp.allow_origin = '*' # line 48
+c.NotebookApp.ip = '0.0.0.0' # line 204. or 'domain.internal' or '172.xxx.xxx.xxx'
+c.NotebookApp.open_browser = False # line 267
 ```
 
 ---
