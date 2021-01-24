@@ -140,12 +140,31 @@ conda install -c conda-forge jupyterlab
 pip install jupyterlab
 ```
 
-#### Configuration
+#### Lab Configuration
 
 ```bash
-jupyter notebook --generate-config # == jupyter lab --generate-config
+jupyter lab --generate-config
 
-Writing default config to: /home/master/.jupyter/jupyter_notebook_config.py
+Writing default config to: ~/.jupyter/jupyter_lab_config.py
+```
+
+```bash
+vi ~/.jupyter/jupyter_lab_config.py
+```
+
+```py
+c.LabApp.open_browser = False # line 348
+c.ServerApp.allow_origin = '*' # line 411
+c.ServerApp.ip = '0.0.0.0' # line 595. or 'domain.local or '172.xxx.Sxxx.xxx'
+c.ServerApp.open_browser = False # line 682
+```
+
+#### Notebook Configuration
+
+```bash
+jupyter notebook --generate-config
+
+Writing default config to: ~/.jupyter/jupyter_notebook_config.py
 ```
 
 ```bash
@@ -154,7 +173,7 @@ vi ~/.jupyter/jupyter_notebook_config.py
 
 ```py
 c.NotebookApp.allow_origin = '*' # line 48
-c.NotebookApp.ip = '0.0.0.0' # line 204. or 'domain.internal' or '172.xxx.xxx.xxx'
+c.NotebookApp.ip = '0.0.0.0' # line 204. or 'domain.local or '172.xxx.xxx.xxx'
 c.NotebookApp.open_browser = False # line 267
 ```
 
@@ -223,9 +242,9 @@ pyenv activate conda3
   miniconda3-latest/envs/conda3
 
 (conda3) $ pyenv virtualenvs
-* conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest (created from /home/master/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest/envs/conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
+* conda3 (created from ~/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest (created from ~/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/conda3 (created from ~/.pyenv/versions/miniconda3-latest)
 ```
 
 #### Create a venv in conda venv
@@ -243,10 +262,10 @@ conda create -n venv390 python=3.9.0
   miniconda3-latest/envs/venv390
 
 (conda3) $ pyenv virtualenvs
-* conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest (created from /home/master/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest/envs/conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest/envs/venv390 (created from /home/master/.pyenv/versions/miniconda3-latest)
+* conda3 (created from ~/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest (created from ~/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/conda3 (created from ~/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/venv390 (created from ~/.pyenv/versions/miniconda3-latest)
 ```
 
 #### Activate another conda venv
@@ -274,10 +293,10 @@ Now `miniconda3-latest/envs/venv390`:
 * miniconda3-latest/envs/venv390 (set by PYENV_VERSION environment variable)
 
 (venv390) λ pyenv virtualenvs
-  conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest (created from /home/master/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest/envs/conda3 (created from /home/master/.pyenv/versions/miniconda3-latest)
-* miniconda3-latest/envs/venv390 (created from /home/master/.pyenv/versions/miniconda3-latest)
+  conda3 (created from ~/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest (created from ~/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/conda3 (created from ~/.pyenv/versions/miniconda3-latest)
+* miniconda3-latest/envs/venv390 (created from ~/.pyenv/versions/miniconda3-latest)
 
 (venv390) λ python -V
 Python 3.9.0
@@ -291,10 +310,11 @@ Python 3.9.0
 (conda3) λ conda env list
 # conda environments:
 #
-base                     /home/master/.pyenv/versions/miniconda3-latest
-conda3                *  /home/master/.pyenv/versions/miniconda3-latest/envs/conda3
-venv390                  /home/master/.pyenv/versions/miniconda3-latest/envs/venv390
+base                     ~/.pyenv/versions/miniconda3-latest
+conda3                *  ~/.pyenv/versions/miniconda3-latest/envs/conda3
+venv390                  ~/.pyenv/versions/miniconda3-latest/envs/venv390
 
 (conda3) λ conda env remove -n venv390
-Remove all packages in environment /home/master/.pyenv/versions/miniconda3-latest/envs/venv390:
+Remove all packages in environment ~/.pyenv/versions/miniconda3-latest/envs/venv390:
 ```
+S
