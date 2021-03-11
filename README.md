@@ -231,7 +231,9 @@ pyenv install miniconda3-latest
 
 ```bash
 pyenv virtualenv miniconda3-latest conda3
-pyenv activate conda3
+~~pyenv activate conda3~~
+conda activate conda3
+conda deactivate
 ```
 
 ```bash
