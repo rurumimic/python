@@ -319,4 +319,9 @@ venv390                  ~/.pyenv/versions/miniconda3-latest/envs/venv390
 (conda3) λ conda env remove -n venv390
 Remove all packages in environment ~/.pyenv/versions/miniconda3-latest/envs/venv390:
 ```
-S
+
+#### Pyenv global
+
+```bash
+pyenv global 3.8.6 miniconda3-latest
+```
