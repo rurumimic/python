@@ -157,6 +157,7 @@ c.LabApp.open_browser = False # line 348
 c.ServerApp.allow_origin = '*' # line 411
 c.ServerApp.ip = '0.0.0.0' # line 595. or 'domain.local or '172.xxx.Sxxx.xxx'
 c.ServerApp.open_browser = False # line 682
+c.ServerApp.browser = u'open -a /Applications/Google\ Chrome.app %s'
 ```
 
 #### Notebook Configuration
