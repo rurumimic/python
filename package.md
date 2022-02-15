@@ -4,6 +4,12 @@
 
 ### [Installing from local archives](https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-local-archives)
 
+Download a archive file.
+
+```bash
+python3 -m pip download SomeProject [-d dir]
+```
+
 Install a particular source archive file.
 
 ```bash
