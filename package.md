@@ -4,10 +4,17 @@
 
 ### [Installing from local archives](https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-local-archives)
 
+List of all packages.
+
+```bash
+python3 -m pip freeze --all > requirements.txt
+```
+
 Download a archive file.
 
 ```bash
 python3 -m pip download SomeProject [-d dir]
+python3 -m pip download -r requirements.txt
 ```
 
 Install a particular source archive file.
