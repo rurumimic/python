@@ -69,6 +69,15 @@ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
 echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.profile
 ```
 
+For zsh:
+
+```bash
+echo -e '\n# pyenv' >> ~/.zprofile
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zprofile
+```
+
 Restart shell:
 
 ```bash
@@ -93,8 +102,20 @@ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
 
 ```bash
 git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+```
+
+For bash:
+
+```bash
 echo -e '\n# virtualenv' >> ~/.profile
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.profile
+```
+
+For zsh:
+
+```bash
+echo -e '\n# virtualenv' >> ~/.zprofile
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zprofile
 ```
 
 Restart shell:
@@ -125,12 +146,24 @@ echo 'source ~/.autoenv/activate.sh' >> ~/.zshrc
 
 #### Ubuntu
 
+For bash:
+
 ```bash
 echo -e '\n# autoenv' >> ~/.profile
 echo "AUTOENV_ENV_FILENAME='.autoenv'" >> ~/.profile
 echo "AUTOENV_ENV_LEAVE_FILENAME='.autoenv.leave'" >> ~/.profile
 echo "AUTOENV_ENABLE_LEAVE='enabled'" >> ~/.profile
 echo 'source ~/.autoenv/activate.sh' >> ~/.profile
+```
+
+For zsh:
+
+```bash
+echo -e '\n# autoenv' >> ~/.zprofile
+echo "AUTOENV_ENV_FILENAME='.autoenv'" >> ~/.zprofile
+echo "AUTOENV_ENV_LEAVE_FILENAME='.autoenv.leave'" >> ~/.zprofile
+echo "AUTOENV_ENABLE_LEAVE='enabled'" >> ~/.zprofile
+echo 'source ~/.autoenv/activate.sh' >> ~/.zprofile
 ```
 
 ### Jupyter
