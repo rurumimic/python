@@ -72,10 +72,15 @@ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nf
 For zsh:
 
 ```bash
-echo -e '\n# pyenv' >> ~/.zprofile
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zprofile
+echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+echo 'eval "$(pyenv init --path)"' >> ~/.profile
+
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 ```
 
 Restart shell:
