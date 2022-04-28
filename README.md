@@ -6,6 +6,9 @@
   - [github](https://github.com/pyenv/pyenv-virtualenv)
 - [autoenv](#autoenv)
   - [github](https://github.com/inishchith/autoenv)
+- [poetry](#poetry)
+  - [documentation](https://python-poetry.org/docs/master)
+  - [github](https://github.com/python-poetry/poetry)
 - direnv
   - [doc](https://direnv.net/)
 - [conda](#conda)
@@ -72,14 +75,16 @@ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nf
 For zsh:
 
 ```bash
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
-
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
 echo 'eval "$(pyenv init --path)"' >> ~/.profile
 
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
+echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 ```
 
@@ -164,11 +169,60 @@ echo 'source ~/.autoenv/activate.sh' >> ~/.profile
 For zsh:
 
 ```bash
-echo -e '\n# autoenv' >> ~/.zprofile
-echo "AUTOENV_ENV_FILENAME='.autoenv'" >> ~/.zprofile
-echo "AUTOENV_ENV_LEAVE_FILENAME='.autoenv.leave'" >> ~/.zprofile
-echo "AUTOENV_ENABLE_LEAVE='enabled'" >> ~/.zprofile
-echo 'source ~/.autoenv/activate.sh' >> ~/.zprofile
+echo -e '\n# autoenv' >> ~/.zshrc
+echo "AUTOENV_ENV_FILENAME='.autoenv'" >> ~/.zshrc
+echo "AUTOENV_ENV_LEAVE_FILENAME='.autoenv.leave'" >> ~/.zshrc
+echo "AUTOENV_ENABLE_LEAVE='enabled'" >> ~/.zshrc
+echo 'source ~/.autoenv/activate.sh' >> ~/.zshrc
+```
+
+### Poetry
+
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+#### Ubuntu
+
+For bash:
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+poetry completions bash > /etc/bash_completion.d/poetry
+```
+
+For zsh:
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+poetry completions zsh > ~/.zfunc/_poetry
+```
+in `.zsrhc` before `compinit`:
+
+```bash
+fpath+=~/.zfunc
+```
+
+For Oh-My-Zsh:
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+mkdir $ZSH_CUSTOM/plugins/poetry
+poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+```
+
+in `.zsrhc`:
+
+```bash
+plugins(
+	poetry
+	...
+	)
+```
+
+#### Uninstall
+
+```bash
+curl -sSL https://install.python-poetry.org | python3 - --uninstall
 ```
 
 ### Jupyter
