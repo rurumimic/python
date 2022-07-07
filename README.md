@@ -148,7 +148,7 @@ exec "$SHELL"
 ### Autoenv
 
 ```bash
-git clone https://github.com/hyperupcall/autoenv.git ~/.autoenv
+git clone https://github.com/hyperupcall/autoenv ~/.autoenv
 ```
 
 #### macOS
