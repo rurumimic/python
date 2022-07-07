@@ -26,7 +26,7 @@
 
 ```bash
 xcode-select --install
-brew install openssl readline sqlite3 xz zlib
+brew install openssl readline sqlite3 xz zlib tcl-tk
 ```
 
 ##### Install
@@ -39,9 +39,20 @@ brew upgrade pyenv
 
 Install: [dependencies](https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
 
+For bash:
+
 ```bash
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
+echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+```
+
+For zsh:
+
+```bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 ```
 
 ```bash
