@@ -208,7 +208,7 @@ For zsh:
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 poetry completions zsh > ~/.zfunc/_poetry
 ```
-in `.zsrhc` before `compinit`:
+in `.zshrc` before `compinit`:
 
 ```bash
 fpath+=~/.zfunc
@@ -221,7 +221,7 @@ mkdir $ZSH_CUSTOM/plugins/poetry
 poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
 ```
 
-in `.zsrhc`:
+in `.zshrc`:
 
 ```bash
 plugins(
