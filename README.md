@@ -305,20 +305,20 @@ pyenv uninstall 3.9.0
 ### Create a virtual environment
 
 ```bash
-pyenv virtualenv 3.9.0 venv390
+pyenv virtualenv 3.10.5 venv310
 pyenv virtualenvs
 ```
 
 #### Remove a virtual environment
 
 ```bash
-pyenv virtualenv-delete venv390
+pyenv virtualenv-delete venv310
 ```
 
 ### Set auto-activate
 
 ```bash
-echo 'pyenv activate venv390' > .autoenv
+echo 'pyenv activate venv310' > .autoenv
 echo 'pyenv deactivate' > .autoenv.leave
 ```
 
@@ -331,101 +331,96 @@ pyenv install --list | grep conda
 pyenv install miniconda3-latest
 ```
 
-#### Create a conda environment
+#### Create a conda virtual environment in miniconda
 
 ```bash
-pyenv virtualenv miniconda3-latest conda3
-~~pyenv activate conda3~~
-conda activate conda3
-conda deactivate
+pyenv activate miniconda3-latest
 ```
 
 ```bash
-(conda3) $ pyenv versions
-  3.9.1
-* conda3 (set by PYENV_VERSION environment variable)
+(root) (miniconda3-latest) $ conda create -n venv370 python=3.7.0
+```
+
+```bash
+(root) (miniconda3-latest) $ pyenv versions
+  system
+  2.7.18
+  3.10.5
+* miniconda3-latest (set by PYENV_VERSION environment variable)
+  miniconda3-latest/envs/venv370
+```
+
+```bash
+(root) (miniconda3-latest) $ pyenv virtualenvs
+* miniconda3-latest (created from ~/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/venv370 (created from ~/.pyenv/versions/miniconda3-latest)
+```
+
+#### Activate conda venv
+
+Deactivate `miniconda3-latest`:
+
+```bash
+(root) (miniconda3-latest) $ pyenv deactivate
+```
+
+Activate the conda venv:
+
+```bash
+pyenv activate miniconda3-latest/envs/venv370
+```
+
+Now `miniconda3-latest/envs/venv370`:
+
+```bash
+(venv370) (venv370) $ pyenv versions
+  system
+  2.7.18
+  3.10.5
   miniconda3-latest
-  miniconda3-latest/envs/conda3
-
-(conda3) $ pyenv virtualenvs
-* conda3 (created from ~/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest (created from ~/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest/envs/conda3 (created from ~/.pyenv/versions/miniconda3-latest)
-```
-
-#### Create a venv in conda venv
-
-```bash
-conda create -n venv390 python=3.9.0
+* miniconda3-latest/envs/venv370 (set by PYENV_VERSION environment variable)
 ```
 
 ```bash
-(conda3) $ pyenv versions
-  3.9.1
-* conda3 (set by PYENV_VERSION environment variable)
-  miniconda3-latest
-  miniconda3-latest/envs/conda3
-  miniconda3-latest/envs/venv390
-
-(conda3) $ pyenv virtualenvs
-* conda3 (created from ~/.pyenv/versions/miniconda3-latest)
+(venv370) (venv370) $ pyenv virtualenvs
   miniconda3-latest (created from ~/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest/envs/conda3 (created from ~/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest/envs/venv390 (created from ~/.pyenv/versions/miniconda3-latest)
+* miniconda3-latest/envs/venv370 (created from ~/.pyenv/versions/miniconda3-latest)
 ```
-
-#### Activate another conda venv
-
-In `conda3`:
 
 ```bash
-(conda3) λ pyenv version
-conda3 (set by PYENV_VERSION environment variable)
-
-(conda3) λ python -V
-Python 3.9.1
-
-(conda3) λ pyenv activate miniconda3-latest/envs/venv390
+conda env list
+# conda environments:
+#
+base                    ~/.pyenv/versions/miniconda3-latest
+venv370              *  ~/.pyenv/versions/miniconda3-latest/envs/venv370
 ```
 
-Now `miniconda3-latest/envs/venv390`:
-
-```
-(venv390) λ pyenv versions
-  3.9.1
-  conda3
-  miniconda3-latest
-  miniconda3-latest/envs/conda3
-* miniconda3-latest/envs/venv390 (set by PYENV_VERSION environment variable)
-
-(venv390) λ pyenv virtualenvs
-  conda3 (created from ~/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest (created from ~/.pyenv/versions/miniconda3-latest)
-  miniconda3-latest/envs/conda3 (created from ~/.pyenv/versions/miniconda3-latest)
-* miniconda3-latest/envs/venv390 (created from ~/.pyenv/versions/miniconda3-latest)
-
-(venv390) λ python -V
-Python 3.9.0
+```bash
+(venv370) (venv370) $ python -V
+Python 3.7.0
 ```
 
 #### Remove conda venv
 
+Deactivate the conda env:
+
 ```bash
-(venv390) 1 λ pyenv activate conda3
+(venv370) (venv370) $ pyenv deactivate
+```
 
-(conda3) λ conda env list
-# conda environments:
-#
-base                     ~/.pyenv/versions/miniconda3-latest
-conda3                *  ~/.pyenv/versions/miniconda3-latest/envs/conda3
-venv390                  ~/.pyenv/versions/miniconda3-latest/envs/venv390
+Activate `miniconda3-latest`:
 
-(conda3) λ conda env remove -n venv390
-Remove all packages in environment ~/.pyenv/versions/miniconda3-latest/envs/venv390:
+```bash
+pyenv activate miniconda3-latest
+```
+
+```bash
+(root) (miniconda3-latest) $ conda env remove -n venv370
+Remove all packages in environment ~/.pyenv/versions/miniconda3-latest/envs/venv370:
 ```
 
 #### Pyenv global
 
 ```bash
-pyenv global 3.8.6 miniconda3-latest
+pyenv global 3.10.5
 ```
