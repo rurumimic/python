@@ -400,12 +400,68 @@ venv370              *  ~/.pyenv/versions/miniconda3-latest/envs/venv370
 Python 3.7.0
 ```
 
+##### Make a softlink
+
+```bash
+~/.pyenv/versions
+├── 2.7.18/
+├── 3.10.5/
+└── miniconda3-latest/
+    └── envs/
+        └── venv370/
+```
+
+```bash
+ln -s ~/.pyenv/versions/miniconda3-latest/envs/venv370 ~/.pyenv/versions/venv370
+```
+
+```bash
+pyenv versions
+
+  system
+  2.7.18
+* 3.10.5 (set by ~/.pyenv/version)
+  miniconda3-latest
+  miniconda3-latest/envs/venv370
+  venv370
+```
+
+Activate:
+
+```bash
+pyenv activate venv370
+```
+
+```bash
+(venv370) (venv370) $ python -V
+Python 3.7.0
+
+(venv370) (venv370) $ pyenv versions
+  system
+  2.7.18
+  3.10.5
+  miniconda3-latest
+  miniconda3-latest/envs/venv370
+* venv370 (set by PYENV_VERSION environment variable)
+
+(venv370) (venv370) $ pyenv virtualenvs
+  miniconda3-latest (created from ~/.pyenv/versions/miniconda3-latest)
+  miniconda3-latest/envs/venv370 (created from ~/.pyenv/versions/miniconda3-latest)
+* venv370 (created from ~/.pyenv/versions/miniconda3-latest)
+```
+
 #### Remove conda venv
 
 Deactivate the conda env:
 
 ```bash
 (venv370) (venv370) $ pyenv deactivate
+```
+
+Remove the symlink:
+
+```bash
+rm ~/.pyenv/versions/venv370
 ```
 
 Activate `miniconda3-latest`:
